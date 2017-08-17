@@ -54,6 +54,14 @@ boot_delay=1			#Helps to avoid sdcard corruption (default 0)
 disable_splash=1		#Avoids the rainbow splash screen on boot (default 0)
 ```
 
+
+...and, assuming you want to play at 1080p/24f (via https://www.raspberrypi.org/documentation/configuration/config-txt/video.md)
+
+```bash
+hdmi_group=1
+hdmi_mode=32
+```
+
 Disable root login, password login etc. in /etc/ssh/sshd_config
 ```bash
 PermitRootLogin no
