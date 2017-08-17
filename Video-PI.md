@@ -63,7 +63,7 @@ X11Forwarding no
 Pray you've added the correct authorized_keys
 
 Play a 1080p video:
-````bash
+```bash
 omxplayer --live rtmp://<server_ip>/live/foo
 ```
 
