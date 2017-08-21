@@ -86,3 +86,37 @@ Run ffmpeg to output to rtmp
 ```bash
 ffmpeg -re -i big_buck_bunny_1080p_h264.mov -c copy  -f flv rtmp://<server>/live/foo
 ```
+
+Or via a CasparCG
+```bash
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <paths>
+    <media-path>media/</media-path>
+    <log-path>log/</log-path>
+    <data-path>data/</data-path>
+    <template-path>template/</template-path>
+    <thumbnail-path>thumbnail/</thumbnail-path>
+    <font-path>font/</font-path>
+  </paths>
+  <lock-clear-phrase>secret</lock-clear-phrase>
+  <channels>
+    <channel>
+      <video-mode>1080i5000</video-mode>
+      <channel-layout>stereo</channel-layout>
+      <consumers>
+        <ffmpeg>
+          <path>rtmp://<server>/live/foo</path>
+          <args>-acodec libvo_aacenc -vcodec libx264 -pix_fmt yuv420p -preset ultrafast -format flv</args>
+        </ffmpeg>
+      </consumers>
+    </channel>
+  </channels>
+  <controllers>
+    <tcp>
+      <port>5250</port>
+      <protocol>AMCP</protocol>
+    </tcp>
+  </controllers>
+</configuration>
+```
