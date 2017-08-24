@@ -106,8 +106,8 @@ Or via a CasparCG
       <channel-layout>stereo</channel-layout>
       <consumers>
         <ffmpeg>
-          <path>rtmp://<server>/live/foo</path>
-          <args>-acodec libvo_aacenc -vcodec libx264 -pix_fmt yuv420p -preset ultrafast -format flv</args>
+          <path>udp://<server>:1234</path>
+          <args>-f mpegts -acodec libvo_aacenc -ar 48000 -ab 64k -pix_fmt yuv420p -vcodec libx264 -preset ultrafast -profile:v high -level 30 -maxrate 10000000 -bufsize 10000000 -b 1200k</args>
         </ffmpeg>
       </consumers>
     </channel>
